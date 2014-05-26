@@ -1,25 +1,63 @@
-package com.example.savecurve;
+package com.example.savecurve2;
+
+
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.Parcel;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SaveCurve extends Activity
+class Vertex implements Parcelable {
+	Vertex(float ax, float ay, boolean ad){
+		x = ax;
+		y = ay;
+		Draw = ad;
+	}
+	float x;
+	float y;
+	boolean Draw;
+	
+	public int describeContents() {
+		return 0;
+	}
+	
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeFloat(x);
+		dest.writeFloat(y);
+		dest.writeBooleanArray(new boolean[] {Draw});
+	}
+	
+	public static final Parcelable.Creator<Vertex> CREATOR = new Creator<Vertex>() {
+		public Vertex createFromParcel(Parcel source) {
+			int x = source.readInt();
+			int y = source.readInt();
+			boolean[] td = new boolean[1];
+			source.readBooleanArray(td);
+			return new Vertex(x,y, td[0]);
+		}
+		
+		public Vertex[] newArray(int size) {
+			return new Vertex[size];
+		}
+	};
+	
+}
+public class SaveCurve2 extends Activity
 {
 	private MyView vw;
-    ArrayList<Vertex> arVertex;
-	/** Called when the activity is first created. */
+	ArrayList<Vertex> arVertex;
+	int Count;
 	
-    @SuppressWarnings("unchecked")
-	@Override
+    /** Called when the activity is first created. */
+    @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -29,28 +67,15 @@ public class SaveCurve extends Activity
         if(savedInstanceState == null) {
         	arVertex = new ArrayList<Vertex>();
         } else {
-        	arVertex =
-        			(ArrayList<Vertex>)savedInstanceState.getSerializable("Curve");
+        	arVertex = savedInstanceState.getParcelableArrayList("Curve");
         }
     }
     
     public void onSaveInstanceState(Bundle outState) {
-    	outState.putSerializable("Curve", arVertex);
+    	outState.putParcelableArrayList("Curve", arVertex);
     }
     
-    public class Vertex implements Serializable {
-    	private static final long serialVersionUID = 100L;
-    	Vertex(float ax, float ay, boolean ad) {
-    		x=ax;
-    		y=ay;
-    		Draw = ad;
-    	}
-    	float x;
-    	float y;
-    	boolean Draw;
-    }
-    
-    protected class MyView extends View {
+    protected class MyView extends View{
     	Paint mPaint;
     	
     	public MyView(Context context) {

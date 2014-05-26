@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
+import android.widget.Toast;
+import android.util.Log;
 
 public class SaveState extends Activity
 {
@@ -40,6 +42,7 @@ public class SaveState extends Activity
     	public boolean onKeyDown(int KeyCode, KeyEvent event) {
         	super.onKeyDown(KeyCode, event);
         	if(event.getAction() == KeyEvent.ACTION_DOWN) {
+        		Toast.makeText(SaveState.this, "ACTION_DOWN", Toast.LENGTH_SHORT).show();
         		switch(KeyCode) {
         		case KeyEvent.KEYCODE_DPAD_LEFT:
         			x-=5;

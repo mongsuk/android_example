@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.KeyEvent;
+import android.widget.Toast;
 import android.util.Log;
 
 public class SaveState extends Activity
@@ -55,6 +56,7 @@ public class SaveState extends Activity
     		// 하드웨어 키 이벤트가 발생했을때 호출된다.
         	super.onKeyDown(KeyCode, event);
         	if(event.getAction() == KeyEvent.ACTION_DOWN) {
+        		Toast.makeText(SaveState.this, "ACTION_DOWN", Toast.LENGTH_SHORT).show();
         		switch(KeyCode) {
         		case KeyEvent.KEYCODE_DPAD_LEFT:
         			x-=5;

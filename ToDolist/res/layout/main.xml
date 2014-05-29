@@ -7,6 +7,9 @@
    <EditText android:id="@+id/edit"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
+	android:inputType="text"
+	android:imeOptions="actionDone"
+	android:text="@string/add_a_new_task"
 	 />
    
    <ListView android:id="@+id/listview"

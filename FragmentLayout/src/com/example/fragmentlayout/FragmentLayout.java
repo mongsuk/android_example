@@ -1,6 +1,7 @@
 package com.example.fragmentlayout;
 
 import android.annotation.SuppressLint;
+import android.widget.ArrayAdapter;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.content.res.Configuration;
@@ -43,7 +44,7 @@ public class FragmentLayout extends Activity
     	public void onActivityCreated(Bundle savedInstatnceState) {
     		super.onActivityCreated(savedInstatnceState);
     		
-    		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.sample_list_item))
+    		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.sample_list_item_activated_1, Shakespeare.TITLES));
     		
     	}
     }

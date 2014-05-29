@@ -3,13 +3,11 @@ package com.example.todolist;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,11 +33,13 @@ public class ToDolist extends Activity
         final EditText editText = (EditText) findViewById(R.id.edit);
     //    InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
     //   inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-   /**/     
+   /* */    
         editText.setOnKeyListener(new OnKeyListener()
         {
             public boolean onKey(View v, int keyCode, KeyEvent event)
             {
+            	Log.e("onKey",""+event.getAction());
+            	
                 if (event.getAction() == KeyEvent.ACTION_DOWN)
                 {
                 	Log.e("KeyEvent.ACTION_DOWN","KeyEvent.ACTION_DOWN");
@@ -73,12 +73,12 @@ public class ToDolist extends Activity
         list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);    
     
     }
-	@Override
+	/* @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		Log.e("KeyEvent.ACTION_DOWN","KeyEvent.ACTION_DOWN");
 		return super.onKeyDown(keyCode, event);
-	}  
+	} */
 	
 
 }

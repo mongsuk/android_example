@@ -10,16 +10,16 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+
 
 public class ToDolist extends Activity
 {
@@ -39,7 +39,7 @@ public class ToDolist extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
   	  	myAdapter = new ArrayAdapter<String>(this, 
-      		android.R.layout.simple_list_item_single_choice, 
+      		android.R.layout.simple_list_item_1, 
       		todolist);
       
       list= (ListView)findViewById(R.id.listview);
@@ -48,7 +48,7 @@ public class ToDolist extends Activity
       editText = (EditText) findViewById(R.id.edit);
       editText.setInputType(0);
   
-        editText.setOnEditorActionListener(new OnEditorActionListener(){
+      editText.setOnEditorActionListener(new OnEditorActionListener(){
 
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -78,5 +78,17 @@ public class ToDolist extends Activity
 				return false;
 			}
     });
+        
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ListView listView = (ListView) parent;
+				// TODO 아이템 클릭시에 구현할 내용은 여기에.
+                String item = (String) listView.getItemAtPosition(position);
+                Toast.makeText(ToDolist.this, item, Toast.LENGTH_LONG).show();
+            }
+        });
+		
     }
+
 }

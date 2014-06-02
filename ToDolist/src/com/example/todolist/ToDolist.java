@@ -20,14 +20,12 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-
 public class ToDolist extends Activity
 {
 	ArrayList<String> todolist = new ArrayList<String>(); // null 로 초기화 되서 문제 
 	EditText editText;
 	private ArrayAdapter<String> myAdapter;
 	private ListView list;
-	int i=0;
 	boolean check= false;
 	/** Called when the activity is first created. */
 
@@ -85,8 +83,6 @@ public class ToDolist extends Activity
                 String item = (String) listView.getItemAtPosition(position);
                 Toast.makeText(ToDolist.this, item, Toast.LENGTH_LONG).show();
             }
-        });
-		
+        });	
     }
-
 }

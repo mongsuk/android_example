@@ -1,6 +1,7 @@
 package com.example.fragmentlayout;
 
 import android.annotation.SuppressLint;
+import android.widget.ArrayAdapter;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
@@ -56,6 +57,9 @@ public class FragmentLayout extends Activity
     	public void onActivityCreated(Bundle savedInstatnceState) {
     		super.onActivityCreated(savedInstatnceState);
     		
+
+    		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.sample_list_item_activated_1, Shakespeare.TITLES));
+
     		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1,Shakespeare.TITLES));
     		View detailsFrame = getActivity().findViewById(R.id.details);
     		mDualPane = detailsFrame !=null && detailsFrame.getVisibility() == View.VISIBLE;
@@ -63,6 +67,7 @@ public class FragmentLayout extends Activity
     		if(savedInstatnceState != null) {
     			mCurCheckPosition = savedInstatnceState.getInt("curChoice", 0);
     		}
+
     		
     		if(mDualPane) {
     			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);

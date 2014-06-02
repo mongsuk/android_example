@@ -32,7 +32,6 @@ public class ToDolist extends Activity
 	boolean check= false;
 	/** Called when the activity is first created. */
 
-
 	@SuppressLint("NewApi")
 	@Override
     public void onCreate(Bundle savedInstanceState)
@@ -40,24 +39,15 @@ public class ToDolist extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
   	  myAdapter = new ArrayAdapter<String>(this, 
-      		android.R.layout.simple_list_item_single_choice, 
-      		todolist);
+  			android.R.layout.simple_list_item_multiple_choice
+  		      		,todolist);
       
       list= (ListView)findViewById(R.id.listview);
       list.setAdapter(myAdapter);
       list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
       editText = (EditText) findViewById(R.id.edit);
       editText.setInputType(0);
-  
-      
-   //  InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-  //  imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
-
-     
-      /*
-         InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-    inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-     */     
+        
         editText.setOnEditorActionListener(new OnEditorActionListener(){
 
 			@Override

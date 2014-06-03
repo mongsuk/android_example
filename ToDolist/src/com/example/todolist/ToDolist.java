@@ -29,16 +29,14 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 {
 	ArrayList<String> todolist = new ArrayList<String>();
 	EditText editText;
-	ArrayAdapter<String> myAdapter;
-	BrrayList<String> myList;
-	ListView list;
+	private ArrayAdapter<String> myAdapter;
+	BrrayList<String> myList ;
+	private ListView list;
+
 	BrrayList<String> myToList;
 	CrrayList<String> myBestList;
-	boolean check = false;
-	boolean checkline = false;
-	String [] Schedule = new String[100];
-	int index=0;
 
+	boolean check= false;
 	/** Called when the activity is first created. */
 
 	@SuppressLint("NewApi")

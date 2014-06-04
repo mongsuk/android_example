@@ -1,6 +1,5 @@
 package com.example.todolist;
 
-
 import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 	private ArrayAdapter<String> myAdapter;
 	BrrayList<String> myList ;
 	private ListView list;
+	
 
 	BrrayList<String> myToList;
 	CrrayList<String> myBestList;
@@ -77,7 +77,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				// TODO Auto-generated method stub
 				 if(actionId==EditorInfo.IME_ACTION_DONE){
-					 Log.e("IME_ACTION_DONE","IME_ACTION_DONE");
+					// Log.e("IME_ACTION_DONE","IME_ACTION_DONE");
 					 todolist.add(0, editText.getText().toString());
 					 editText.setText(R.string.add_a_new_task);
 					 editText.setInputType(0);
@@ -91,7 +91,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
-				Log.e("OnTouchListener","OnTouchListener");
+				//Log.e("OnTouchListener","OnTouchListener");
 				editText.setInputType(1);
 				
 				if(check == false){
@@ -118,23 +118,29 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
             	   View view2 = listView.getChildAt(position2);// listView에서 view를 얻어온다.
             	   
             	   ((TextView) view2).setPaintFlags(((TextView) view2).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-               }//  linecheck(view, position);
+               
+               }
+               linecheck(item);
               //  Toast.makeText(ToDolist.this, item, Toast.LENGTH_LONG).show();
             }
         });		
     }
 	
 	int number=0;
-	View [] lineposition = new View[100];
+	String [] lineposition = new String[100];
 	
-	void linecheck(View view, int position){
-		sureCapacitiy(number +1);
-		lineposition[number++]= view;
+	void linecheck(String str){
+		//sureCapacitiy(number +1);
+		Log.e("linecheck",""+str);
+		
+		lineposition[number++]= str;
 		
 		for(int i=0; i<lineposition.length; i++) {
 			if(lineposition[i] == null)
 				return;
-			((TextView) lineposition[i]).setPaintFlags(((TextView) view).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			int position = todolist.indexOf(lineposition[i]);
+			View view = list.getChildAt(position);
+			((TextView) view).setPaintFlags(((TextView) view).getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 		}
 		
 	}
@@ -142,12 +148,12 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 	@SuppressLint("NewApi")
 	public void sureCapacitiy(int minnumber) {
 		int oldnumber = lineposition.length;
-		if(minnumber > oldnumber) {
-			View oldData[] = lineposition;
+		if(minnumber > oldnumber) {			
+			String oldData[] = lineposition;
 			int newNumber = (oldnumber *3)/2 +1;
 			if(newNumber < minnumber)
 				newNumber = minnumber;
-			lineposition = Arrays.copyOf(lineposition, newNumber);
+			//lineposition = Arrays.copyOf(lineposition, newNumber);
 		}
 		
 	}

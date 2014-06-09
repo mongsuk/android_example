@@ -32,6 +32,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 	private ArrayAdapter<String> myAdapter;
 	BrrayList<String> myList ;
 	private ListView list;
+	
 
 	BrrayList<String> myToList;
 	CrrayList<String> myBestList;
@@ -107,6 +108,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				// TODO Auto-generated method stub
+
 				editText.setInputType(1);// 에딧텍스트 뷰 활성화
 				
 				if (check == false) {
@@ -116,7 +118,6 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 	
 				return false;
 			}
-		});
 		
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override // 리스트 아이템 클릭시 실행
@@ -158,7 +159,7 @@ public class ToDolist extends Activity // Android system 에서 ToDolist를 호�
 			int newNumber = (oldnumber * 3) / 2 + 1;
 			if (newNumber < minnumber)
 				newNumber = minnumber;
-			lineposition = Arrays.copyOf(lineposition, newNumber);
+			//lineposition = Arrays.copyOf(lineposition, newNumber);
 		}
 
 	}

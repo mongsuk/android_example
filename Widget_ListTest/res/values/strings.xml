@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">Widget_ListTest</string>
     <string name="add_a_new_task">add a new task</string>
+    <string name="warring">Please Rewrite</string>
+    <string name="add">add</string>
 </resources>

@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    <EditText android:id="@+id/edit"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:inputType="text"
-	android:imeOptions="actionDone"
-	android:text="@string/add_a_new_task"
-	 />
-     
-    <ListView 
+
+    <ListView
         android:id="@+id/list2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/edit" >
+    </ListView>
+
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="212dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/button1"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:text="@string/add_a_new_task" >
+    </EditText>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Button" />
+
+</RelativeLayout>
